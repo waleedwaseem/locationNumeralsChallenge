@@ -1,0 +1,33 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div>
+		<h3>
+			Conversion of decimal numbers to location numerals and back.
+		</h3>
+		<div>
+			Number: <input type="number" class="number"> 
+			<button type="button" onclick="convertNumber()">Click Me!</button> <br><br>
+			
+			Location Numerals: <input type="text" class="numerals"> 
+			<button id="numerals" type="button">Click Me!</button> <br><br>
+			
+			Abbreviated Form: <input type="text" class="abbform"> <button id="abbform" type="button">Click Me!</button> 
+		</div>
+	</div>
+</body>
+
+<script>
+	function convertNumber() {
+	  $.ajax({
+	        type: 'POST',
+	        url: '/convertNumber',
+	        data: { value: $('.number').val() },
+	        success: function(resultData) {
+	           alert(resultData);
+	        }
+	      });
+	}
+</script>
