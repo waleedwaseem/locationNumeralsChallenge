@@ -22,6 +22,10 @@ app.post('/convertNumber', function(req, res) {
 	let base = 2;
 	let stack = [];
 	
+	if (typeof parseInt(number) !== 'number' || !number) {
+		res.json('Value is not an integer');
+	}
+	
 	while (number > 0) {
 		while (Math.pow(base, i) <= number) {
 		  i++;
