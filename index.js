@@ -46,8 +46,6 @@ app.post('/convertNumerals', function(req, res) {
 	let base = 2;
 	let stack = [];
 
-	console.log(numerals);
-
 	for (var i=0; i<numerals.length; i++) {
 		for (var key in dictionary) {
 			if (dictionary[key] == numerals[i])
