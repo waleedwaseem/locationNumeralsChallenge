@@ -12,7 +12,7 @@
 			<button type="button" onclick="convertNumber()">Click Me!</button> <br><br>
 			
 			Location Numerals: <input type="text" class="numerals"> 
-			<button id="numerals" type="button">Click Me!</button> <br><br>
+			<button type="button"  onclick="convertNumerals()">Click Me!</button> <br><br>
 			
 			Abbreviated Form: <input type="text" class="abbform"> <button id="abbform" type="button">Click Me!</button> 
 		</div>
@@ -25,6 +25,17 @@
 	        type: 'POST',
 	        url: '/convertNumber',
 	        data: { value: $('.number').val() },
+	        success: function(resultData) {
+	           alert(resultData);
+	        }
+	      });
+	}
+
+	function convertNumerals() {
+	  $.ajax({
+	        type: 'POST',
+	        url: '/convertNumerals',
+	        data: { value: $('.numerals').val() },
 	        success: function(resultData) {
 	           alert(resultData);
 	        }

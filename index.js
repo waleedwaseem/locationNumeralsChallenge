@@ -25,7 +25,7 @@ app.post('/convertNumber', function(req, res) {
 	if (typeof parseInt(number) !== 'number' || !number) {
 		res.json('Value is not an integer');
 	}
-	
+
 	while (number > 0) {
 		while (Math.pow(base, i) <= number) {
 		  i++;
@@ -38,6 +38,29 @@ app.post('/convertNumber', function(req, res) {
 
 	stack.reverse();
 	res.json(stack);    
+});
+
+
+app.post('/convertNumerals', function(req, res) {
+	let numerals = req.body.value;
+	let base = 2;
+	let stack = [];
+
+	console.log(numerals);
+
+	for (var i=0; i<numerals.length; i++) {
+		for (var key in dictionary) {
+			if (dictionary[key] == numerals[i])
+				stack.push(Math.pow(base, key))
+		}
+	}
+
+	var total = 0;
+	for (var j in stack) {
+		total += stack[j]
+	}
+
+	res.json(total);    
 });
 
 app.set('port', process.env.PORT || 3000);
